@@ -87,7 +87,7 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
-sudo ufw allow 8443
+sudo ufw allow 8443/tcp
 sudo ufw allow 12/tcp
 sudo ufw allow 8000/tcp
 sudo ufw allow 1080/tcp
