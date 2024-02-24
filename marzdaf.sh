@@ -48,6 +48,7 @@ net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
 sysctl -p;
 
 #install toolkit
+timedatectl set-timezone Asia/Jakarta
 apt-get install net-tools lnav vnstat -y
 
 #Install Marzban
@@ -74,8 +75,9 @@ apt install socat cron bash-completion -y
 sudo mkdir -p /var/lib/marzban/certs/
 systemctl stop docker
 curl https://get.acme.sh | sh -s email=$email
-/root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/certs/fullchain.pem --keypath /var/lib/marzban/certs/key.pem --ecc
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --issue --standalone -d $domain \
+--key-file /var/lib/marzban/certs/key.pem \
+--fullchain-file /var/lib/marzban/certs/fullchain.pem
 systemctl start docker
 
 #install firewall
