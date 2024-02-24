@@ -48,7 +48,7 @@ net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
 sysctl -p;
 
 #install toolkit
-apt-get install lnav vnstat -y
+apt-get install net-tools lnav vnstat -y
 
 #Install Marzban
 sudo bash -c "$(curl -sL https://github.com/daffahelmi/Marzban-scripts/raw/master/marzban.sh)" @ install
@@ -71,6 +71,7 @@ apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dns
 apt install socat cron bash-completion -y
 
 #install cert
+sudo mkdir -p /var/lib/marzban/certs/
 systemctl stop docker
 curl https://get.acme.sh | sh -s email=$email
 /root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256
