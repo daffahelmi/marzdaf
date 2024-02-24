@@ -24,7 +24,7 @@ if [[ $(systemctl status docker | grep -w running | awk '{print $3}' | sed 's/(/
 else
     DOCKER="${RED}Not Okay${NC}";
 fi
-if [[ $(netstat -ntlp | grep -i python | grep -i 0.0.0.0:22 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '22' ]]; then
+if [[ $(netstat -ntlp | grep -i python | grep -i 0.0.0.0:12 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '12' ]]; then
     MARZ="${GREEN}Okay${NC}";
 else
     MARZ="${RED}Not Okay${NC}";
