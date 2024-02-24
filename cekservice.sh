@@ -24,6 +24,11 @@ if [[ $(systemctl status docker | grep -w running | awk '{print $3}' | sed 's/(/
 else
     DOCKER="${RED}Not Okay${NC}";
 fi
+if [[ $(netstat -ntlp | grep -i python | grep -i 0.0.0.0:22 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '22' ]]; then
+    MARZ="${GREEN}Okay${NC}";
+else
+    MARZ="${RED}Not Okay${NC}";
+fi
 if [[ $(systemctl status ufw | grep -w Active | awk '{print $2}' | sed 's/(//g' | sed 's/)//g' | sed 's/ //g') == 'active' ]]; then
     UFW="${GREEN}Okay${NC}";
 else
@@ -36,6 +41,7 @@ echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ Docker               :$DOCKER"
 echo -e "❇️ Firewall             :$UFW"
+echo -e "❇️ Panel                :$MARZ"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo ""
 
