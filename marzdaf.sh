@@ -47,3 +47,63 @@ net.ipv6.conf.default.disable_ipv6=1
 net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
 sysctl -p;
 
+#install toolkit
+apt-get install lnav vnstat -y
+
+#Install Marzban
+sudo bash -c "$(curl -sL https://github.com/daffahelmi/Marzban-scripts/raw/master/marzban.sh)" @ install
+
+#profile
+echo -e 'profile' >> /root/.profile
+wget -O /usr/bin/profile "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/profile";
+chmod +x /usr/bin/profile
+apt install screenfetch -y
+wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/cekservice.sh"
+chmod +x /usr/bin/cekservice
+
+#Install Speedtest
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest -y
+
+#install socat
+apt install iptables -y
+apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
+apt install socat cron bash-completion -y
+
+#install cert
+systemctl stop docker
+curl https://get.acme.sh | sh -s email=$email
+/root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256
+~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/certs/fullchain.pem --keypath /var/lib/marzban/certs/key.pem --ecc
+systemctl start docker
+
+#install firewall
+apt install ufw -y
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow 12/tcp
+sudo ufw allow 8000/tcp
+sudo ufw allow 1080/tcp
+sudo ufw allow 1080/udp
+yes | sudo ufw enable
+
+#swap ram 1gb
+wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
+sh swap 1G
+rm swap
+
+#finishing
+apt autoremove -y
+apt clean
+systemctl restart docker
+cd /opt/marzban
+docker compose down && docker compose up -d
+cd
+rm /root/marzdaf.sh
+
+
+
+
