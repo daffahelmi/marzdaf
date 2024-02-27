@@ -68,8 +68,7 @@ sudo apt-get install speedtest -y
 
 #install socat
 apt install iptables -y
-apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
-apt install socat cron bash-completion -y
+apt install cron socat -y
 
 #install cert
 sudo mkdir -p /var/lib/marzban/certs/
