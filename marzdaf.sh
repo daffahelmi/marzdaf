@@ -58,7 +58,7 @@ sudo bash -c "$(curl -sL https://github.com/daffahelmi/Marzban-scripts/raw/maste
 echo -e 'profile' >> /root/.profile
 wget -O /usr/bin/profile "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/profile";
 chmod +x /usr/bin/profile
-apt install screenfetch -y
+apt install neofetch -y
 wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/cekservice.sh"
 chmod +x /usr/bin/cekservice
 
