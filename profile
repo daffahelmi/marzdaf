@@ -1,4 +1,4 @@
 #!/bin/bash
 clear
-screenfetch -A 'Arch Linux' -w
+neofetch --ascii_distro Artix
 cekservice
