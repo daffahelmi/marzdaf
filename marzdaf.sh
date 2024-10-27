@@ -67,6 +67,9 @@ curl https://get.acme.sh | sh -s email=$email
 --fullchain-file /var/lib/marzban/certs/fullchain.pem
 systemctl start docker
 
+#clear cache setiap 6 jam
+echo "0 */6 * * * sudo sync; echo 3 > /proc/sys/vm/drop_caches" | crontab -
+
 #swap ram 1gb
 wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
 sh swap 1G
