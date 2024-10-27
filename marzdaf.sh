@@ -73,9 +73,10 @@ sh swap 1G
 rm swap
 
 # Salin file template HAProxy dari GitHub
-sudo wget -O /etc/haproxy/haproxy.cfg.template https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.cfg.template
-export domain=$(cat /root/domain)
-envsubst '$domain' < /etc/haproxy/haproxy.cfg.template > /etc/haproxy/haproxy.cfg
+wget -O /root/haproxy.sh https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.sh
+chmod +x haproxy.sh
+./haproxy.sh
+rm haproxy.sh
 
 # Unduh db.sqlite3 langsung ke /var/lib/marzban
 sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/raw/refs/heads/main/db.sqlite3
