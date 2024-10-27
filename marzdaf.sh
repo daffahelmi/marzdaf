@@ -6,9 +6,6 @@ read -rp "Masukkan Domain: " domain
 echo "$domain" > /root/domain
 domain=$(cat /root/domain)
 
-#email
-read -rp "Masukkan Email anda: " email
-
 #Preparation
 clear
 cd;
@@ -61,7 +58,7 @@ apt install cron socat -y
 #install cert
 sudo mkdir -p /var/lib/marzban/certs/
 systemctl stop docker
-curl https://get.acme.sh | sh -s email=$email
+curl https://get.acme.sh | sh
 ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --issue --standalone -d $domain \
 --key-file /var/lib/marzban/certs/key.pem \
 --fullchain-file /var/lib/marzban/certs/fullchain.pem
