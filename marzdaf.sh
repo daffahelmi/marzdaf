@@ -72,6 +72,11 @@ wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
 sh swap 1G
 rm swap
 
+# Salin file template HAProxy dari GitHub
+sudo wget -O /etc/haproxy/haproxy.cfg.template https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.cfg.template
+export domain=$(cat /root/domain)
+envsubst '$domain' < /etc/haproxy/haproxy.cfg.template > /etc/haproxy/haproxy.cfg
+
 # Unduh db.sqlite3 langsung ke /var/lib/marzban
 sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/raw/refs/heads/main/db.sqlite3
 
@@ -79,7 +84,7 @@ sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/r
 sudo wget -O /var/lib/marzban/xray_config.json https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/xray_config.json
 
 # Unduh haproxy.cfg langsung ke /etc/haproxy
-sudo wget -O /etc/haproxy/haproxy.cfg https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.cfg
+#sudo wget -O /etc/haproxy/haproxy.cfg https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.cfg
 
 # Unduh .env langsung ke /opt/marzban
 sudo wget -O /opt/marzban/.env https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/.env
