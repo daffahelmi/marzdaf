@@ -192,6 +192,14 @@
     ],
     "outbounds": [
         {
+            "protocol": "freedom",
+            "tag": "DIRECT"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "BLOCK"
+        },
+        {
             "tag": "WARP",
             "protocol": "socks",
             "settings": {
@@ -202,14 +210,6 @@
                     }
                 ]
             }
-        },
-        {
-            "protocol": "freedom",
-            "tag": "DIRECT"
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "BLOCK"
-        }
+        }        
     ]
 }
