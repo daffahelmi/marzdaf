@@ -49,22 +49,10 @@ sysctl -p;
 
 #install toolkit
 timedatectl set-timezone Asia/Jakarta
-apt-get install net-tools lnav vnstat -y
+apt-get install net-tools lnav vnstat haproxy -y
 
 #Install Marzban
 sudo bash -c "$(curl -sL https://github.com/daffahelmi/Marzban-scripts/raw/master/marzban.sh)" @ install
-
-#profile
-echo -e 'profile' >> /root/.profile
-wget -O /usr/bin/profile "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/profile";
-chmod +x /usr/bin/profile
-apt install neofetch -y
-wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/daffahelmi/marzdaf/main/cekservice.sh"
-chmod +x /usr/bin/cekservice
-
-#Install Speedtest
-curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-sudo apt-get install speedtest -y
 
 #install socat
 apt install iptables -y
@@ -78,20 +66,6 @@ curl https://get.acme.sh | sh -s email=$email
 --key-file /var/lib/marzban/certs/key.pem \
 --fullchain-file /var/lib/marzban/certs/fullchain.pem
 systemctl start docker
-
-#install firewall
-apt install ufw -y
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw allow 8443/tcp
-sudo ufw allow 12/tcp
-sudo ufw allow 8000/tcp
-sudo ufw allow 1080/tcp
-sudo ufw allow 1080/udp
-yes | sudo ufw enable
 
 #swap ram 1gb
 wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
