@@ -73,16 +73,16 @@ sh swap 1G
 rm swap
 
 # Unduh db.sqlite3 langsung ke /var/lib/marzban
-sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/blob/main/db.sqlite3
+sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/raw/refs/heads/main/db.sqlite3
 
 # Unduh xray_config.json langsung ke /var/lib/marzban
-sudo wget -O /var/lib/marzban/xray_config.json https://github.com/daffahelmi/marzdaf/blob/main/xray_config.json
+sudo wget -O /var/lib/marzban/xray_config.json https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/xray_config.json
 
 # Unduh haproxy.cfg langsung ke /etc/haproxy
-sudo wget -O /etc/haproxy/haproxy.cfg https://github.com/daffahelmi/marzdaf/blob/main/haproxy.cfg
+sudo wget -O /etc/haproxy/haproxy.cfg https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/haproxy.cfg
 
 # Unduh .env langsung ke /opt/marzban
-sudo wget -O /opt/marzban/.env https://github.com/daffahelmi/marzdaf/blob/main/.env
+sudo wget -O /opt/marzban/.env https://raw.githubusercontent.com/daffahelmi/marzdaf/refs/heads/main/.env
 
 #finishing
 apt autoremove -y
