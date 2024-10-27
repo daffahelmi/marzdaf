@@ -81,6 +81,9 @@ sudo wget -O /var/lib/marzban/xray_config.json https://github.com/daffahelmi/mar
 # Unduh haproxy.cfg langsung ke /etc/haproxy
 sudo wget -O /etc/haproxy/haproxy.cfg https://github.com/daffahelmi/marzdaf/blob/main/haproxy.cfg
 
+# Unduh .env langsung ke /opt/marzban
+sudo wget -O /opt/marzban/.env https://github.com/daffahelmi/marzdaf/blob/main/.env
+
 #finishing
 apt autoremove -y
 apt clean
