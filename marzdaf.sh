@@ -72,6 +72,15 @@ wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
 sh swap 1G
 rm swap
 
+# Unduh db.sqlite3 langsung ke /var/lib/marzban
+sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/blob/main/db.sqlite3
+
+# Unduh xray_config.json langsung ke /var/lib/marzban
+sudo wget -O /var/lib/marzban/xray_config.json https://github.com/daffahelmi/marzdaf/blob/main/xray_config.json
+
+# Unduh haproxy.cfg langsung ke /etc/haproxy
+sudo wget -O /etc/haproxy/haproxy.cfg https://github.com/daffahelmi/marzdaf/blob/main/haproxy.cfg
+
 #finishing
 apt autoremove -y
 apt clean
