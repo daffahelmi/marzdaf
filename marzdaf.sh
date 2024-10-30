@@ -77,6 +77,7 @@ wget -O /root/haproxy.sh https://raw.githubusercontent.com/daffahelmi/marzdaf/re
 chmod +x haproxy.sh
 ./haproxy.sh
 rm haproxy.sh
+systemctl restart haproxy
 
 # Unduh db.sqlite3 langsung ke /var/lib/marzban
 sudo wget -O /var/lib/marzban/db.sqlite3 https://github.com/daffahelmi/marzdaf/raw/refs/heads/main/db.sqlite3
