@@ -46,7 +46,7 @@ sysctl -p;
 
 #install toolkit
 timedatectl set-timezone Asia/Jakarta
-apt-get install net-tools lnav haveged htop vnstat haproxy -y
+apt-get install net-tools lnav haveged htop vnstat haproxy gpg -y
 
 #Install Marzban
 sudo bash -c "$(curl -sL https://github.com/daffahelmi/Marzban-scripts/raw/master/marzban.sh)" @ install
